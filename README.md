@@ -1,2 +1,1 @@
-bootstrap-sass
-==============
+sample css

@@ -1,0 +1,44 @@
+{
+  "author": "Dan BROOKS <dan.brooks@move.com>",
+  "dependencies": {
+    "grunt": "0.4.x"
+  },
+  "devDependencies": {
+    "bower": "1.3.x",
+    "dot": "1.0.x",
+    "expect.js": "0.3.x",
+    "grunt": "0.4.x",
+    "grunt-bower-task": "0.3.x",
+    "grunt-contrib-clean": "0.5.x",
+    "grunt-contrib-concat": "0.1.x",
+    "grunt-contrib-jshint": "0.3.x",
+    "grunt-contrib-jst": "0.6.x",
+    "grunt-contrib-sass": "0.7.x",
+    "grunt-contrib-testem": "0.5.x",
+    "grunt-contrib-uglify": "0.2.x",
+    "grunt-contrib-watch": "0.5.x",
+    "grunt-dot-compiler": "0.3.x",
+    "grunt-shell": "0.5.x",
+    "grunt-string-replace": "0.2.x",
+    "matchdep": "*"
+  },
+  "license": "MoveInc",
+  "main": "Gruntfile.js",
+  "name": "Realtor.com",
+  "private": true,
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:MoveInc/rdc-web.git"
+  },
+  "scripts": {
+    "postinstall": "grunt setup",
+    "test": "grunt validate"
+  },
+  "token": {
+    "libVersion": "1.2.0",
+    "moveVersion": "1.5.0",
+    "rdcVersion": "7.2.0"
+  },
+  "version": "0.1.1"
+}

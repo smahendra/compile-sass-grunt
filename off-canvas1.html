@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Blog Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+   
+<style type="text/css">
+ 
+ /*=======================================*/
+/* Off canvas navigation: open and close */
+/*=======================================*/
+.menu-open {
+                position: absolute;
+                width: 100%;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                overflow-x: hidden;
+}
+
+.menu-open .navbar-main {
+                position: static;
+}
+
+/*===============================*/
+/* Off canvas navigation: styles */
+/*===============================*/
+.offcanvas-menu {
+    display:none;
+    width:280px;
+    z-index:500;
+    position: absolute;
+    top: 0;
+    left: -280px;
+    bottom: 0;
+    background:#404040;
+    overflow-y: auto;
+    color: #fff;
+    border-right: 1px solid #404040;
+}
+
+.me{}
+
+
+
+</style>
+
+
+  </head>
+
+
+  <body>
+
+  <div id="menu" class="offcanvas-menu position-static">
+   <ul>
+     <li>First item</li>
+     <li>Second item</li>
+     <li>Third item</li>
+  </ul>
+ </div>
+
+<div id="mainContainer" class="full-height"> 
+
+<div class="button" id="close-action"> click me</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nunc dolor, ornare vel sagittis at, condimentum eget quam. Aenean non consequat lorem. In at nisl quis neque molestie cursus ut et nunc. Vivamus pellentesque mattis elit at ultricies. Ut malesuada nunc eget tellus euismod tempor. In lacinia urna et justo pellentesque, et vehicula dolor feugiat. Praesent mattis adipiscing euismod. Sed a libero ac tellus lacinia cursus eu nec enim. Fusce vitae rutrum lorem. Nunc vehicula quam eu laoreet dictum. Pellentesque id nisi nisl. </p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nunc dolor, ornare vel sagittis at, condimentum eget quam. Aenean non consequat lorem. In at nisl quis neque molestie cursus ut et nunc. Vivamus pellentesque mattis elit at ultricies. Ut malesuada nunc eget tellus euismod tempor. In lacinia urna et justo pellentesque, et vehicula dolor feugiat. Praesent mattis adipiscing euismod. Sed a libero ac tellus lacinia cursus eu nec enim. Fusce vitae rutrum lorem. Nunc vehicula quam eu laoreet dictum. Pellentesque id nisi nisl. </p>
+
+</div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+
+
+// Toggle Method as jQuery has deprecated the Toggle Method
+// Source: http://jsfiddle.net/npwAz/1/
+// Source: https://github.com/fkling/jQuery-Function-Toggle-Plugin
+
+
+(function($) {
+    $.fn.clickToggle = function(func1, func2) {
+        var funcs = [func1, func2];
+        this.data('toggleclicked', 0);
+        this.click(function() {
+            var data = $(this).data();
+            var tc = data.toggleclicked;
+            $.proxy(funcs[tc], this)();
+            data.toggleclicked = (tc + 1) % 2;
+        });
+        return this;
+    };
+}(jQuery));
+
+
+
+
+           function showMenu(){
+           
+            var body=$('body'),
+            menu=$('#menu'),
+            mainContainer=$('#mainContainer');
+            
+            body.addClass("no-horizontal-overflow");
+            menu.show().addClass("open").animate({ left:'0'},350);
+            mainContainer.addClass("menu-open").animate({ left:'280px'},350);
+            }
+
+
+        function hideMenu () {
+           
+            //alert('i am in hide menu');
+            
+            var body=$('body'),
+            menu=$('#menu'),
+            mainContainer=$('#mainContainer');
+
+            menu.animate({ left:'-280px'},350,function(){
+              menu.removeClass("open");
+              menu.hide();
+            });
+
+            mainContainer.animate({ left:''},350,function(){
+              mainContainer.removeClass("menu-open");
+              body.removeClass("no-horizontal-overflow");
+            });
+
+               
+         }
+
+
+    /*$( "#close-action" ).on( "click", function() {  
+      
+      showMenu();
+
+       $('#close-action').addClass('newclass');
+      
+        var box = $(this);
+
+        if ( box.hasClass('newclass') ) {
+            hideMenu ();
+        }
+  } );
+
+*/
+
+
+
+$("#close-action").clickToggle(function() {
+    showMenu();
+}, function() {
+    hideMenu();
+});
+     
+
+
+   
+
+
+    </script>
+
+   
+  </body>
+</html>

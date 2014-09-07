@@ -11,6 +11,7 @@ module.exports = function(grunt) {
             // hooks: ['.git/hooks/pre-commit'],
             css: ['<%= rdc_css %>']
         },
+        
         sass: {
             dev: {
                 files: {
@@ -43,13 +44,63 @@ module.exports = function(grunt) {
                 }
             }
         },
+        //Chris Coyier
+        // svgstore: {
+        //   options: {
+        //     prefix : 'shape-', 
+        //   },
+        //   default : {
+        //       files: {
+        //         'svg-sprites/svg-defs.svg': ['svgs/*.svg'],
+        //       }
+        //     }
+        //   },
+
+        
+        iconizr: {
+        simple: {
+          src: ['svgs'],
+          dest: 'svg-sprites',
+          options:{
+                render:{ css:false }
+                  }
+                }
+              },
+
+      // SVG Sprites creates folders and HTML file.
+       // svg_sprites: {
+       //      options: {
+       //        // Task-specific options go here.
+       //      },
+       //      your_target: {
+       //        src: 'svgs/*.svg',
+       //        dest: 'svg-sprites'
+       //      },
+       //  },
+
+        // svg2png: {
+        // all: {
+        //     // specify files in array format with multiple src-dest mapping
+        //         files: [
+        //             // rasterize all SVG files in "img" and its subdirectories to "img/png"
+        //             { cwd: 'svgs', src: ['**/*.svg'], dest: 'svg-sprites/pngs/' }
+        //         ]
+        // }
+        // },
         
         rdc_css: 'css/',
         rdc_sass: 'sass/'
        
     });
+
+
+    grunt.loadNpmTasks('grunt-svg-sprites');
+    grunt.loadNpmTasks('grunt-svg2png');
     
     // Default task
     grunt.registerTask( 'default', [ 'clean:css', 'sass', 'watch'] );
+    //grunt.registerTask( 'combine', [ 'svg_sprites', 'svg2png'] );
+    grunt.registerTask( 'combine', [ 'iconizr'] );
+
 
 };
